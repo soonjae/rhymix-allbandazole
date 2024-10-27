@@ -14,6 +14,7 @@
 	<input type="hidden" name="module" value="allbandazole" />
 	<input type="hidden" name="act" value="procAllbandazoleAdminInsertConfig" />
 	<input type="hidden" name="success_return_url" value="{{ getRequestUriByServerEnviroment() }}" />
+	<input type="hidden" name="error_return_url" value="{{ getRequestUriByServerEnviroment() }}" />
 	<input type="hidden" name="xe_validator_id" value="modules/allbandazole/tpl/config/1" />
 
 	@if (!empty($XE_VALIDATOR_MESSAGE) && $XE_VALIDATOR_ID === 'modules/allbandazole/tpl/config/1')

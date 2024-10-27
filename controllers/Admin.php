@@ -2,6 +2,8 @@
 
 namespace Rhymix\Modules\Allbandazole\Controllers;
 
+use Rhymix\Framework\Exception;
+use Rhymix\Framework\Filters\IpFilter;
 use Rhymix\Modules\Allbandazole\Models\Blacklist as BlacklistModel;
 use Rhymix\Modules\Allbandazole\Models\Config as ConfigModel;
 use Context;
@@ -72,6 +74,16 @@ class Admin extends Base
 		$config->ip_blocks = array_filter(array_map('trim', explode("\n", trim($vars->ip_blocks))), function($str) {
 			return $str !== '';
 		});
+
+		// 현재 접속자가 차단될 수 있는지 확인
+		if ($config->user_agents_regexp && preg_match($config->user_agents_regexp, $_SERVER['HTTP_USER_AGENT'] ?? ''))
+		{
+			throw new Exception('msg_allbandazole_your_user_agent');
+		}
+		if ($config->ip_blocks && IpFilter::inRanges(\RX_CLIENT_IP, $config->ip_blocks))
+		{
+			throw new Exception('msg_allbandazole_your_ip_block');
+		}
 
 		// 변경된 설정을 저장
 		$output = ConfigModel::setConfig($config);
