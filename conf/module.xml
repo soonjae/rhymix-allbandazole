@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+	<grants>
+	</grants>
+	<actions>
+		<action name="dispAllbandazoleAdminConfig" class="Controllers\Admin" menu-name="allbandazole" admin-index="true" />
+		<action name="procAllbandazoleAdminInsertConfig" class="Controllers\Admin" />
+	</actions>
+	<eventHandlers>
+		<eventHandler before="moduleHandler.init" class="Controllers\EventHandlers" method="beforeModuleInit" />
+	</eventHandlers>
+	<menus>
+		<menu name="allbandazole" type="all">
+			<title xml:lang="ko">구충제 모듈</title>
+		</menu>
+	</menus>
+</module>
