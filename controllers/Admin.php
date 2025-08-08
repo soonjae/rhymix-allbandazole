@@ -48,6 +48,11 @@ class Admin extends Base
 		{
 			$config->ip_blocks = BlacklistModel::IP_BLOCKS;
 		}
+		}
+        if (!isset($config->geoip_blocks))
+        {
+            $config->geoip_blocks = BlacklistModel::GEOIP_BLOCKS;
+        }
 
 		// Context에 세팅
 		Context::set('config', $config);
