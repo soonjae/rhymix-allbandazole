@@ -80,4 +80,13 @@ class Blacklist
 	public const IP_BLOCKS = [
 		'222.239.104.0/24',
 	];
+
+	/**
+     * GEOIP Blocks
+     */
+    public const GEOIP_BLOCKS = [
+        'CN',
+        'IN',
+        'TH',
+    ];
 }
