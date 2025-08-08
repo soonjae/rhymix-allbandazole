@@ -36,6 +36,16 @@ class EventHandlers extends Base
 		{
 			return $this->_block();
 		}
+
+		$geoip =$_SERVER['GEOIP_COUNTRY_CODE'] ?? '' ;
+        if ($config->geoip_blocks && extension_loaded('geoip') )
+        {
+               if(in_array($geoip, $config->geoip_blocks))
+               {
+                   return $this->_block();
+               }
+        }
+
 	}
 
 	/**
