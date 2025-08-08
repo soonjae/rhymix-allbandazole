@@ -55,6 +55,16 @@
 		</div>
 	</section>
 
+	<section class="section">
+        <div class="x_control-group">
+            <label class="x_control-label" for="geoip_blocks">{{ $lang->cmd_allbandazole_geoip_blocks }}</label>
+            <div class="x_controls">
+                <textarea name="geoip_blocks" id="geoip_blocks" class="x_full-width">{{ implode("\n", $config->geoip_blocks) . "\n" }}</textarea>
+                <p class="x_help-block">{{ $lang->msg_allbandazole_multiline }}</p>
+            </div>
+        </div>
+    </section>
+
 	<div class="btnArea x_clearfix">
 		<button type="submit" class="x_btn x_btn-primary x_pull-right">{{ $lang->cmd_registration }}</button>
 	</div>
