@@ -79,7 +79,10 @@ class Admin extends Base
 		$config->ip_blocks = array_filter(array_map('trim', explode("\n", trim($vars->ip_blocks))), function($str) {
 			return $str !== '';
 		});
-
+		$config->geoip_blocks = array_filter(array_map('trim', explode("\n", trim($vars->geoip_blocks))), function($str) {
+            return $str !== '';
+        });
+		
 		// 현재 접속자가 차단될 수 있는지 확인
 		if ($config->user_agents_regexp && preg_match($config->user_agents_regexp, $_SERVER['HTTP_USER_AGENT'] ?? ''))
 		{
